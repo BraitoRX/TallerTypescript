@@ -15,13 +15,9 @@ function renderCoursesInTable(courses) {
     });
 }
 function applyFilterByName() {
-    console.log('applyFilterByName');
-    console.log('input ' + inputSearchBox);
     var text = inputSearchBox.value;
     text = (text == null) ? '' : text;
-    console.log('text ' + text);
     clearCoursesInTable();
-    console.log('Borrando cursos');
     var coursesFiltered = searchCourseByName(text, dataCourses);
     renderCoursesInTable(coursesFiltered);
 }

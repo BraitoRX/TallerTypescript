@@ -6,4 +6,4 @@ export const dataCourses = [
     new Course("Algoritmos", "Carlos Fuentes",  2),
     new Course("Estructuras de Datos",  "Yesid D",  1),
     new Course("Futbol 2",  "James R",  6)
-  ]
+  ] 

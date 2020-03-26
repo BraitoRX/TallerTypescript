@@ -26,18 +26,14 @@ function renderCoursesInTable(courses: Course[]): void {
     coursesTbody.appendChild(trElement);
   });
 }
+ 
 
+ 
 
-
-
-function applyFilterByName() {
-  console.log('applyFilterByName');
-  console.log('input '+ inputSearchBox);
+function applyFilterByName() { 
   let text = inputSearchBox.value;
   text = (text == null) ? '' : text;
-  console.log('text '+ text);
   clearCoursesInTable();
-  console.log('Borrando cursos');
   let coursesFiltered: Course[] = searchCourseByName(text, dataCourses);
   renderCoursesInTable(coursesFiltered);
 }
