@@ -6,7 +6,6 @@ var totalCreditElm = document.getElementById("total-credits");
 btnfilterByName.onclick = function () { return applyFilterByName(); };
 renderCoursesInTable(dataCourses);
 totalCreditElm.innerHTML = "" + getTotalCredits(dataCourses);
-
 function renderCoursesInTable(courses) {
     console.log('Desplegando cursos');
     courses.forEach(function (course) {
@@ -16,11 +15,13 @@ function renderCoursesInTable(courses) {
     });
 }
 function applyFilterByName() {
-
+    console.log('applyFilterByName');
+    console.log('input ' + inputSearchBox);
     var text = inputSearchBox.value;
     text = (text == null) ? '' : text;
     console.log('text ' + text);
     clearCoursesInTable();
+    console.log('Borrando cursos');
     var coursesFiltered = searchCourseByName(text, dataCourses);
     renderCoursesInTable(coursesFiltered);
 }
