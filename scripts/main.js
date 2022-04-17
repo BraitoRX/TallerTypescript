@@ -1,40 +1,17 @@
-import { dataCourses } from './dataCourses.js';
-var coursesTbody = document.getElementById('courses');
-var btnfilterByName = document.getElementById("button-filterByName");
-var inputSearchBox = document.getElementById("search-box");
-var totalCreditElm = document.getElementById("total-credits");
-btnfilterByName.onclick = function () { return applyFilterByName(); };
-renderCoursesInTable(dataCourses);
-totalCreditElm.innerHTML = "" + getTotalCredits(dataCourses);
-function renderCoursesInTable(courses) {
-    console.log('Desplegando cursos');
-    courses.forEach(function (course) {
+import { series } from './dataSeries.js';
+var seriesTbody = document.getElementById('series');
+var promedioSeasons = getPromedioSeasons(series);
+renderseriesInTable(series);
+function getPromedioSeasons(series) {
+    var totalSeasons = 0;
+    series.forEach(function (serie) { return totalSeasons = totalSeasons + serie.seasons; });
+    return totalSeasons / series.length;
+}
+function renderseriesInTable(series) {
+    series.forEach(function (serie) {
         var trElement = document.createElement("tr");
-        trElement.innerHTML = "<td>" + course.name + "</td>\n                           <td>" + course.professor + "</td>\n                           <td>" + course.credits + "</td>";
-        coursesTbody.appendChild(trElement);
+        trElement.innerHTML = "<td>".concat(serie.number, "</td>\n                            <td>").concat(serie.name, "</td>\n                            <td>").concat(serie.channel, "</td>\n                            <td>").concat(serie.seasons, "</td>");
+        seriesTbody.appendChild(trElement);
     });
-}
-function applyFilterByName() {
-    var text = inputSearchBox.value;
-    text = (text == null) ? '' : text;
-    clearCoursesInTable();
-    var coursesFiltered = searchCourseByName(text, dataCourses);
-    renderCoursesInTable(coursesFiltered);
-}
-function searchCourseByName(nameKey, courses) {
-    return nameKey === '' ? dataCourses : courses.filter(function (c) {
-        return c.name.match(nameKey);
-    });
-}
-function getTotalCredits(courses) {
-    var totalCredits = 0;
-    courses.forEach(function (course) { return totalCredits = totalCredits + course.credits; });
-    return totalCredits;
-}
-function clearCoursesInTable() {
-    while (coursesTbody.hasChildNodes()) {
-        if (coursesTbody.firstChild != null) {
-            coursesTbody.removeChild(coursesTbody.firstChild);
-        }
-    }
+    seriesTbody.appendChild(document.createElement("tr")).innerHTML = "<td colspan=\"3\">Promedio de Seasons: ".concat(promedioSeasons, "</td>");
 }
