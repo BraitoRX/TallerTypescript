@@ -7,7 +7,7 @@ export class Serie {
   channel: string;
   seasons: number;
   description: string;
-  link: String;
+  link: string;
   photo: string;
   
   constructor(number:number, name:string,channel:string ,seasons:number, description:string,link:string, photo:string) {
@@ -19,4 +19,7 @@ export class Serie {
       this.channel = channel;
       this.link = link;
   }
+  
 }
+
+
